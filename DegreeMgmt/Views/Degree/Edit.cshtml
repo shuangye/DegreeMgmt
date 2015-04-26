@@ -1,0 +1,86 @@
+﻿@model DegreeMgmt.Models.Entities.Degree
+
+<script src="~/Scripts/jquery-1.8.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+@using (Html.BeginForm("Edit", "Degree", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Degree</legend>
+
+        <input name="personId" type="hidden" value="@ViewBag.PersonId" />
+        <input name="returnUrl" type="hidden" value="@ViewBag.ReturnUrl" />
+        @Html.HiddenFor(model => model.ID, "ID")
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.School)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.School)
+            @Html.ValidationMessageFor(model => model.School)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Academy)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Academy)
+            @Html.ValidationMessageFor(model => model.Academy)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Major)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Major)
+            @Html.ValidationMessageFor(model => model.Major)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Edu)
+        </div>
+        <div class="editor-field">
+            <select id="edu" name="edu">
+                <option value="0" selected="selected">请选择：</option>
+                <option value="1">专科</option>
+                <option value="2">本科</option>
+                <option value="3">硕士研究生</option>
+                <option value="4">博士研究生</option>
+            </select>
+            @Html.ValidationMessageFor(model => model.Edu)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Class)
+        </div>
+        <div class="editor-field">
+            <select id="class" name="class">
+                <option value="0" selected="selected">请选择：</option>                
+                <option value="2">学士</option>
+                <option value="3">硕士</option>
+                <option value="4">博士</option>
+            </select>
+            @Html.ValidationMessageFor(model => model.Class)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.AcquiredDate)
+        </div>
+        <div class="editor-field">                        
+            @Html.CalendarFor(model => model.AcquiredDate)
+            @Html.ValidationMessageFor(model => model.AcquiredDate)
+        </div>
+
+        <p>
+            <input type="submit" value="保存" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    <a href="@ViewBag.ReturnUrl">返回</a>
+</div>

@@ -1,0 +1,20 @@
+﻿@model DegreeMgmt.Models.PersonListViewModel
+
+@{
+    ViewBag.Title = "人员索引";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("录入新人员", "Create")
+</p>
+
+@foreach (var item in Model.Persons)
+{ 
+    @Html.Partial("PersonSummary", item)
+}
+
+<div class="btn-group pull-right">
+    翻页： @Html.PageLinks(Model.PagingInfo, x => Url.Action("Index", new { page = x }))
+</div>

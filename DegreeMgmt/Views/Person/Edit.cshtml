@@ -1,0 +1,132 @@
+﻿@model DegreeMgmt.Models.Entities.Person
+
+@{
+    ViewBag.Title = String.IsNullOrWhiteSpace(Model.Name) ? "录入新人员" : "编辑人员信息 - " + Model.Name;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>编辑信息 @Model.Name</h2>
+
+<h3>基本信息</h3>
+
+@using (Html.BeginForm("Edit", "Person", FormMethod.Post,
+    new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Person</legend>
+
+        @Html.HiddenFor(model => model.ID)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Gender)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Gender)          
+            @Html.ValidationMessageFor(model => model.Gender)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Birthday)
+        </div>
+        <div class="editor-field">
+            @Html.CalendarFor(model => model.Birthday)            
+            @Html.ValidationMessageFor(model => model.Birthday)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.IDNumber)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.IDNumber)
+            @Html.ValidationMessageFor(model => model.IDNumber)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Birthplace)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Birthplace)
+            @Html.ValidationMessageFor(model => model.Birthplace)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.MobilePhone)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.MobilePhone)
+            @Html.ValidationMessageFor(model => model.MobilePhone)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Email)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Email)
+            @Html.ValidationMessageFor(model => model.Email)
+        </div>
+
+        <div class="form-group">
+            <div style="position:relative;">
+                <label>头像</label>
+                <a class='btn' href='javascript:;'>
+                    选择文件...
+                    <input type="file" name="Image" size="40"
+                           style="position:absolute;z-index:2;top:0;
+                            left:0;filter: alpha(opacity=0); opacity:0;
+                            background-color:transparent;color:transparent;"
+                           onchange='$("#upload-file-info").html($(this).val());'>
+                </a>
+                <span class='label label-info' id="upload-file-info"></span>
+            </div>
+            @if (Model.Portrait == null)
+            {
+                <div class="form-control-static">无头像</div>
+            }
+            else
+            {
+                <img class="img-thumbnail" width="150" height="150"
+                     src="@Url.Action("GetImage", "Person",
+                        new { Model.ID })" />
+            }
+        </div>
+
+        <h3>学位信息</h3>
+
+        @if (Model.Degrees.Count > 0)
+        {
+            foreach (var item in Model.Degrees)
+            {
+                @Html.Partial("DegreeSummary", item)                
+            }
+        }
+        else
+        {
+            <div>尚无学位</div>
+        }
+        
+        <p>@Html.ActionLink("添加一个学位", "Create", "Degree", new { personId = Model.ID, returnUrl = Request.Url.PathAndQuery }, null)</p>
+
+        <p>
+            <input type="submit" value="保存" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("返回", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

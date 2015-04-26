@@ -1,0 +1,86 @@
+﻿@model DegreeMgmt.Models.Entities.Degree
+
+@{
+    ViewBag.Title = "删除学位";
+}
+
+<h2>Delete</h2>
+
+<h3>确定要删除此学位吗？</h3>
+<fieldset>
+    <legend>删除</legend>
+
+    <input name="personId" type="hidden" value="@ViewBag.PersonId" />
+    <input name="returnUrl" type="hidden" value="@ViewBag.ReturnUrl" />
+    @Html.HiddenFor(model => model.ID, "ID")
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.School)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.School)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Academy)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Academy)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Major)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Major)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Edu)
+    </div>
+    <div class="display-field">
+        @switch (Model.Edu)
+        {
+            case 0: <span>无</span>; break;
+            case 1: <span>专科</span>; break;
+            case 2: <span>本科</span>; break;
+            case 3: <span>硕士研究生</span>; break;
+            case 4: <span>博士研究生</span>; break;
+            default: break;
+        }
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Class)
+    </div>
+    <div class="display-field">
+        @switch (Model.Class)
+        {
+            case 0:
+            case 1: <span>无</span>; break;
+            case 2: <span>学士</span>; break;
+            case 3: <span>硕士</span>; break;
+            case 4: <span>博士</span>; break;
+            default: break;
+        }
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.AcquiredDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.AcquiredDate)
+    </div>
+</fieldset>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="删除" />
+    </p>
+}
+
+
+<div>
+    <a href="@ViewBag.ReturnUrl">返回</a>
+</div>

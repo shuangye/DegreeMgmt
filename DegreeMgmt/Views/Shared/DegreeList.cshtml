@@ -1,0 +1,21 @@
+﻿@model IEnumerable<DegreeMgmt.Models.Entities.Degree>
+
+
+@foreach (var item in Model)
+{
+    <div>
+        <ul>
+            <li>学校：@item.School</li>
+            <li>院系：@item.Academy</li>
+            <li>专业：@item.Major</li>
+            <li>学历：@item.Edu</li>
+            <li>获得学位：@item.Class</li>
+            <li>获得学位的日期：@item.AcquiredDate.ToLongDateString()</li>
+        </ul>
+        <p>
+            @Html.ActionLink("编辑", "Edit", new { id = item.ID }) |
+            @Html.ActionLink("删除", "Delete", new { id = item.ID })
+        </p>
+    </div>
+}
+

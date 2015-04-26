@@ -1,0 +1,37 @@
+﻿@model DegreeMgmt.Models.Entities.Degree
+
+<div>
+    <ul>
+        <li>学校：@Model.School</li>
+        <li>院系：@Model.Academy</li>
+        <li>专业：@Model.Major</li>
+        <li>
+            学历：
+            @switch (Model.Edu)
+            {
+                case 0: <span>无</span>; break;
+                case 1: <span>专科</span>; break;
+                case 2: <span>本科</span>; break;
+                case 3: <span>硕士研究生</span>; break;
+                case 4: <span>博士研究生</span>; break;
+                default: break;
+            }
+        </li>
+        <li>获得学位：
+            @switch (Model.Class)
+            {
+                case 0:
+                case 1: <span>无</span>; break;                
+                case 2: <span>学士</span>; break;
+                case 3: <span>硕士</span>; break;
+                case 4: <span>博士</span>; break;
+                default: break;
+            }
+        </li>
+        <li>获得学位的日期：@Model.AcquiredDate.ToLongDateString()</li>
+    </ul>
+    <p>
+        @Html.ActionLink("编辑此学位", "Edit", "Degree", new { id = Model.ID, personId = Model.HoldByWhom, returnUrl = Request.Url.PathAndQuery }, null) |
+        @Html.ActionLink("删除此学位", "Delete", "Degree", new { id = Model.ID, personId = Model.HoldByWhom, returnUrl = Request.Url.PathAndQuery }, null)
+    </p>
+</div>

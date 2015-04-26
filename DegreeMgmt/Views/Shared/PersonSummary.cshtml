@@ -1,0 +1,22 @@
+﻿@model DegreeMgmt.Models.Entities.Person
+
+<div class="well">
+
+    @if (Model.Portrait != null)
+    {
+        <div class="pull-left" style="margin-right: 10px">
+            <img class="img-thumbnail" width="75" height="75"
+                 src="@Url.Action("GetImage", "Person",
+                new { Model.ID })" />
+        </div>
+    }
+
+    <h3>
+        <strong>@Model.Name</strong>
+        <span class="pull-right label label-primary">@(Model.Gender ? "男" : "女")  @Model.IDNumber</span>
+    </h3>
+    @Html.ActionLink("明细", "Details", "Person", new { id = Model.ID }, null) |
+    @Html.ActionLink("编辑", "Edit", "Person", new { id = Model.ID }, null) |
+    @Html.ActionLink("删除", "Delete", "Person", new { id = Model.ID }, null) 
+    <span class="lead"> @Model.Email</span>
+</div>

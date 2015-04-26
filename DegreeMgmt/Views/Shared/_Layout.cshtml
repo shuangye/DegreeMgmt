@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>@ViewBag.Title - 学位信息管理系统</title>
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width" />
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+        <link href="~/Content/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+        <script src="~/Scripts/jquery-1.8.2.js"></script>
+        <script src="~/Scripts/jquery.validate.js"></script>
+        <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+        <script src="~/Content/My97DatePicker/WdatePicker.js"></script>
+    </head>
+    <body>
+        <header>
+            @if (TempData["message"] != null)
+            {
+                <div class="alert alert-success">@TempData["message"]</div>
+            }
+
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <p class="site-title">@Html.ActionLink("学位信息管理系统", "Index", "Home")</p>
+                </div>
+                <div class="float-right">
+                    <section id="login">
+                       你好，<span class="username">@User.Identity.Name</span>!
+                    </section>
+                    <nav>
+                        <ul id="menu">
+                            <li>@Html.ActionLink("主页", "Index", "Home")</li>
+                            <li>@Html.ActionLink("人员", "Index", "Person")</li>
+                            <li>@Html.ActionLink("关于", "About", "Home")</li>                            
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        <div id="body">
+            @RenderSection("featured", required: false)
+            <section class="content-wrapper main-content clear-fix">
+                @RenderBody()
+            </section>
+        </div>
+        <footer>
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <p>&copy; @DateTime.Now.Year - 钟天天毕业设计</p>
+                </div>
+            </div>
+        </footer>
+
+        @Scripts.Render("~/bundles/jquery")
+        @RenderSection("scripts", required: false)
+    </body>
+</html>
