@@ -4,17 +4,27 @@
     ViewBag.Title = "人员索引";
 }
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("录入新人员", "Create")
-</p>
-
-@foreach (var item in Model.Persons)
-{ 
-    @Html.Partial("PersonSummary", item)
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>@ViewBag.Title</h1>
+                <h2>@ViewBag.Message</h2>
+            </hgroup>           
+        </div>
+    </section>
 }
 
-<div class="btn-group pull-right">
-    翻页： @Html.PageLinks(Model.PagingInfo, x => Url.Action("Index", new { page = x }))
-</div>
+    <p>
+        <strong>@Html.ActionLink("录入新人员", "Create")</strong>
+    </p>
+
+    @foreach (var item in Model.Persons)
+    {
+        @Html.Partial("PersonSummary", item)
+    }
+
+    <div class="btn-group pull-right">
+        <p>&nbsp;</p>
+        <strong>翻页：</strong>@Html.PageLinks(Model.PagingInfo, x => Url.Action("Index", new { page = x }))
+    </div>

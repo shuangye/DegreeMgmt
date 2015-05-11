@@ -120,8 +120,9 @@ header .content-wrapper {
 
 footer {
     clear: both;
+    text-align: center;
     background-color: #e2e2e2;
-    font-size: .8em;
+    font-size: 1em;
     height: 100px;
 }
 
@@ -746,11 +747,25 @@ tr.pager td {
 
     footer {
         text-align: center;
-        height: auto;
+        color: grey;
+        height: auto;        
         padding: 10px 0;
     }
 
         footer p {
             margin: 0;
         }
+}
+
+
+div.well {
+    padding-bottom: 2em;
+    padding-top: 2em;
+    border-bottom-style: dotted;
+}
+
+div.alert-success {
+    background-color: yellow;
+    color: green;
+    text-align: center;
 }

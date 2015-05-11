@@ -4,7 +4,16 @@
     ViewBag.Title = Model.Name + "详细信息";
 }
 
-<h2>@Model.Name</h2>
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>@ViewBag.Title</h1>
+                <h2>@ViewBag.Message</h2>
+            </hgroup>            
+        </div>
+    </section>
+}
 
 <h3>基本信息</h3>
 

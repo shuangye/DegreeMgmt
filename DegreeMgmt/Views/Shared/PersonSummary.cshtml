@@ -2,21 +2,29 @@
 
 <div class="well">
 
-    @if (Model.Portrait != null)
-    {
-        <div class="pull-left" style="margin-right: 10px">
+    <div class="pull-left" style="margin-right: 10px">
+        @if (Model.Portrait != null)
+        {
             <img class="img-thumbnail" width="75" height="75"
                  src="@Url.Action("GetImage", "Person",
                 new { Model.ID })" />
-        </div>
-    }
+
+        }
+        else
+        {
+            <span style="color: gray">[尚未上传头像]</span>
+        }
+    </div>
 
     <h3>
         <strong>@Model.Name</strong>
         <span class="pull-right label label-primary">@(Model.Gender ? "男" : "女")  @Model.IDNumber</span>
     </h3>
+    @if (Model.Birthplace != null || Model.Email != null)
+    { 
+        <div>@Model.Birthplace &nbsp;&nbsp; @Model.Email</div>
+    }
     @Html.ActionLink("明细", "Details", "Person", new { id = Model.ID }, null) |
     @Html.ActionLink("编辑", "Edit", "Person", new { id = Model.ID }, null) |
-    @Html.ActionLink("删除", "Delete", "Person", new { id = Model.ID }, null) 
-    <span class="lead"> @Model.Email</span>
+    @Html.ActionLink("删除", "Delete", "Person", new { id = Model.ID }, null)     
 </div>

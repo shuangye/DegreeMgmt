@@ -82,7 +82,6 @@ E:\Windows\Programming\.NET\Projects\DegreeMgmt\DegreeMgmt\bin\System.Web.WebPag
 E:\Windows\Programming\.NET\Projects\DegreeMgmt\DegreeMgmt\bin\System.Web.WebPages.dll
 E:\Windows\Programming\.NET\Projects\DegreeMgmt\DegreeMgmt\bin\System.Web.WebPages.Razor.dll
 E:\Windows\Programming\.NET\Projects\DegreeMgmt\DegreeMgmt\bin\EntityFramework.xml
-E:\Windows\Programming\.NET\Projects\DegreeMgmt\DegreeMgmt\bin\Microsoft.Web.Infrastructure.xml
 E:\Windows\Programming\.NET\Projects\DegreeMgmt\DegreeMgmt\bin\System.Net.Http.Formatting.xml
 E:\Windows\Programming\.NET\Projects\DegreeMgmt\DegreeMgmt\bin\System.Web.Helpers.xml
 E:\Windows\Programming\.NET\Projects\DegreeMgmt\DegreeMgmt\bin\System.Web.Http.xml
@@ -126,3 +125,9 @@ E:\Windows\Programming\.NET\Projects\DegreeMgmt\DegreeMgmt\bin\zh-Hant\System.Sp
 E:\Windows\Programming\.NET\Projects\DegreeMgmt\DegreeMgmt\obj\Debug\DegreeMgmt.csprojResolveAssemblyReference.cache
 E:\Windows\Programming\.NET\Projects\DegreeMgmt\DegreeMgmt\obj\Debug\DegreeMgmt.dll
 E:\Windows\Programming\.NET\Projects\DegreeMgmt\DegreeMgmt\obj\Debug\DegreeMgmt.pdb
+E:\Windows\Programming\.NET\Projects\DegreeMgmt\DegreeMgmt\bin\Microsoft.Data.Edm.dll
+E:\Windows\Programming\.NET\Projects\DegreeMgmt\DegreeMgmt\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
+E:\Windows\Programming\.NET\Projects\DegreeMgmt\DegreeMgmt\bin\System.Web.Http.OData.dll
+E:\Windows\Programming\.NET\Projects\DegreeMgmt\DegreeMgmt\bin\System.Web.Optimization.dll
+E:\Windows\Programming\.NET\Projects\DegreeMgmt\DegreeMgmt\bin\Microsoft.Data.OData.dll
+E:\Windows\Programming\.NET\Projects\DegreeMgmt\DegreeMgmt\bin\Newtonsoft.Json.xml

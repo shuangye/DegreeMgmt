@@ -4,7 +4,16 @@
     ViewBag.Title = "删除人员";
 }
 
-<h2>Delete</h2>
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>@ViewBag.Title</h1>
+                <h2>@ViewBag.Message</h2>
+            </hgroup>
+        </div>
+    </section>
+}
 
 <h3>确定要删除 @Model.Name 吗？</h3>
 <fieldset>
@@ -21,7 +30,7 @@
          @Html.DisplayNameFor(model => model.Gender)
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Gender)
+        @(Model.Gender ? "男" : "女")
     </div>
 
     <div class="display-label">

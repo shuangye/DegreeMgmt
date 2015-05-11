@@ -1,8 +1,23 @@
 ﻿@model DegreeMgmt.Models.Entities.Degree
 
+@{
+    ViewBag.Title = "编辑学位";
+}
+
 <script src="~/Scripts/jquery-1.8.2.min.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>
 <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>@ViewBag.Title</h1>
+                <h2>@ViewBag.Message</h2>
+            </hgroup>
+        </div>
+    </section>
+}
 
 @using (Html.BeginForm("Edit", "Degree", FormMethod.Post))
 {

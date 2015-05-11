@@ -4,7 +4,16 @@
     ViewBag.Title = "删除学位";
 }
 
-<h2>Delete</h2>
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>@ViewBag.Title</h1>
+                <h2>@ViewBag.Message</h2>
+            </hgroup>
+        </div>
+    </section>
+}
 
 <h3>确定要删除此学位吗？</h3>
 <fieldset>

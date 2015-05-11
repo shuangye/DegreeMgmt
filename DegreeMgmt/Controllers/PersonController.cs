@@ -11,7 +11,7 @@ namespace DegreeMgmt.Controllers
     public class PersonController : Controller
     {
         private EfDbContext dbContext = new EfDbContext();
-        private int pageSize = 20;
+        private int pageSize = 5;
 
         //
         // GET: /Person/
