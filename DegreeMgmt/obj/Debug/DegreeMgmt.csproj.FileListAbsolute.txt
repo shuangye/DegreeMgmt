@@ -131,3 +131,6 @@ E:\Windows\Programming\.NET\Projects\DegreeMgmt\DegreeMgmt\bin\System.Web.Http.O
 E:\Windows\Programming\.NET\Projects\DegreeMgmt\DegreeMgmt\bin\System.Web.Optimization.dll
 E:\Windows\Programming\.NET\Projects\DegreeMgmt\DegreeMgmt\bin\Microsoft.Data.OData.dll
 E:\Windows\Programming\.NET\Projects\DegreeMgmt\DegreeMgmt\bin\Newtonsoft.Json.xml
+E:\Windows\Programming\.NET\Projects\DegreeMgmt\DegreeMgmt\bin\Antlr3.Runtime.dll
+E:\Windows\Programming\.NET\Projects\DegreeMgmt\DegreeMgmt\bin\System.Spatial.dll
+E:\Windows\Programming\.NET\Projects\DegreeMgmt\DegreeMgmt\bin\WebGrease.dll

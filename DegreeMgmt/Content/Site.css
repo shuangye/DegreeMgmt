@@ -429,10 +429,13 @@ input, textarea {
     border: 1px solid #e2e2e2;
     background: #fff;
     color: #333;
-    font-size: 1.2em;
+    font-size: .85em;
     margin: 5px 0 6px 0;
-    padding: 5px;
-    width: 300px;
+    padding: 5px;    
+}
+
+span.filter {
+    width: 5em;
 }
 
 textarea {
@@ -761,7 +764,7 @@ tr.pager td {
 div.well {
     padding-bottom: 2em;
     padding-top: 2em;
-    border-bottom-style: dotted;
+    border-top-style: dotted;   
 }
 
 div.alert-success {

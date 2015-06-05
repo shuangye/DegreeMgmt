@@ -16,7 +16,7 @@ namespace DegreeMgmt.Controllers
         //
         // GET: /Person/
 
-        public ActionResult Index(int page = 1)
+        public ActionResult Index(String name, bool? gender, String school, String major, int? edu, int page = 1)
         {
             if (page <= 0)
                 page = 1;
@@ -24,16 +24,62 @@ namespace DegreeMgmt.Controllers
             if (page > maxPage)
                 page = maxPage;
 
+            IEnumerable<Person> persons = Filter(name, gender, school, major, edu);
+
             PersonListViewModel model = new PersonListViewModel
             {
-                Persons = dbContext.Persons.OrderBy(x => x.ID).Skip((page - 1) * pageSize).Take(pageSize).ToList(),
+                // Persons = dbContext.Persons.OrderBy(x => x.ID).Skip((page - 1) * pageSize).Take(pageSize).ToList(),
+                Persons = persons.OrderBy(x => x.ID).Skip((page - 1) * pageSize).Take(pageSize).ToList(),
                 PagingInfo = new PagingInfo { 
                     CurrentPage = page,
                     ItemsPerPage = pageSize,
-                    TotalItems = dbContext.Persons.Count()
+                    // TotalItems = dbContext.Persons.Count()
+                    TotalItems = persons.Count()
                 }
             };
             return View(model);
+        }
+
+        private IEnumerable<Person> Filter(String name, bool? gender, String school, String major, int? edu)
+        {
+            IEnumerable<Person> persons = dbContext.Persons;
+            IEnumerable<Degree> degrees = dbContext.Degrees;
+            List<Person> result = new List<Person>();
+            bool degreeFiltered = false;
+
+            if (!String.IsNullOrWhiteSpace(name))
+                persons = persons.Where(x => x.Name.Contains(name));
+
+            if (null != gender)
+                persons = persons.Where(x => x.Gender == gender);
+
+            if (!String.IsNullOrWhiteSpace(school))
+            {
+                degreeFiltered = true;
+                degrees = degrees.Where(x => x.School.Contains(school));
+            }
+
+            if (!String.IsNullOrWhiteSpace(major))
+            {
+                degreeFiltered = true;
+                degrees = degrees.Where(x => x.Major.Contains(major));
+            }
+
+            if (null != edu)
+            {
+                degreeFiltered = true;
+                degrees = degrees.Where(x => x.Edu == edu);
+            }
+
+            if (degreeFiltered && null != degrees && degrees.Count() > 0)
+            {
+                foreach (var degree in degrees)
+                    result.AddRange(persons.Where(x => x.ID == degree.HoldByWhom));
+            }
+            else
+                result.AddRange(persons);
+            
+            return result;
         }
 
         //
@@ -166,7 +212,7 @@ namespace DegreeMgmt.Controllers
 
             dbContext.Persons.Remove(person);
             dbContext.SaveChanges();
-            TempData["message"] = string.Format("已保存{0}的信息", person.Name);
+            TempData["message"] = string.Format("已删除{0}的信息", person.Name);
             return RedirectToAction("Index");
         }
 

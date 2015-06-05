@@ -10,21 +10,44 @@
             <hgroup class="title">
                 <h1>@ViewBag.Title</h1>
                 <h2>@ViewBag.Message</h2>
-            </hgroup>           
+            </hgroup>
         </div>
     </section>
 }
 
+<h2>@Html.ActionLink("录入新人员", "Create")</h2>
+<p>&nbsp;</p>
+
+@using (Html.BeginForm("Index", "Person", FormMethod.Post))
+{
+    <span class="filter">姓名中包含：</span> @Html.TextBox("name", null, new { width = 20 })
+    <span class="filter">性别：</span>@Html.RadioButton("gender", true, false, new { width = 2 }) <span>男</span>
+                       @Html.RadioButton("gender", false, false, new { width = 2 }) <span>女</span> <br />
+    <span class="filter">学校中包含：</span> @Html.TextBox("school", null, new { width = 20 }) <br />
+    <span class="filter">专业中包含：</span> @Html.TextBox("major", null, new { width = 20 }) <br />
+    <span class="filter">限定学历为：</span>
+        <select name="edu">
+            <option value="">选择一种学历...</option>
+            <option value="1">专科</option>
+            <option value="2">本科</option>
+            <option value="3">硕士研究生</option>
+            <option value="4">博士研究生</option>
+        </select>
     <p>
-        <strong>@Html.ActionLink("录入新人员", "Create")</strong>
+        <input type="submit" value="过滤" /><span style="color:lightgray">注：某种过滤条件不选择表示不限制</span>
     </p>
+}
 
-    @foreach (var item in Model.Persons)
-    {
-        @Html.Partial("PersonSummary", item)
-    }
+<h3>@Html.ActionLink("清除过滤条件", "Index", "Person")</h3>
 
-    <div class="btn-group pull-right">
-        <p>&nbsp;</p>
-        <strong>翻页：</strong>@Html.PageLinks(Model.PagingInfo, x => Url.Action("Index", new { page = x }))
-    </div>
+<p>&nbsp;</p>
+
+@foreach (var item in Model.Persons)
+{
+    @Html.Partial("PersonSummary", item)
+}
+
+<div class="btn-group pull-right">
+    <hr />
+    <strong>翻页：</strong>@Html.PageLinks(Model.PagingInfo, x => Url.Action("Index", new { page = x }))
+</div>
